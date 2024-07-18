@@ -1,5 +1,6 @@
 const $ = document
 let songList = []
+let currentSong = 0
 
 const songElem = $.querySelector('#songElem')
 const songImg = $.querySelector('.songImg')
@@ -40,12 +41,24 @@ requstApi()
 console.log(songList);
 
 function selectSong(){
-    let mainSongDate = songList[Math.floor(Math.random() * songList.length)]
+    let mainSongDate = songList[currentSong]
     songImg.setAttribute('src', mainSongDate.album.cover_big)
     songName.innerHTML = mainSongDate.title
     artistName.innerHTML = mainSongDate.artist.name
     songElem.setAttribute('src' , mainSongDate.preview)
 }
+nextSongBtn.addEventListener('click' , ()=>{
+    if(currentSong > songList.length -1) currentSong = 0
+    currentSong++
+    selectSong()
+    songElem.play()
+})
+prevSongBtn.addEventListener('click' , ()=>{
+    currentSong--
+    if(currentSong < 0) currentSong = songList.length -1
+    selectSong()
+    songElem.play()
+})
 
 ctrlBtn.addEventListener('click' , () => {
     if(ctrlIcon.classList.contains('fa-pause')){
