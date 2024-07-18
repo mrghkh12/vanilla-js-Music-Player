@@ -14,3 +14,18 @@ const artistName = $.querySelector('.artistName')
 
 
 const timeBar = $.querySelector('#timeBar')
+
+
+
+
+ctrlBtn.addEventListener('click' , () => {
+    if(ctrlIcon.classList.contains('fa-pause')){
+        songElem.pause();
+        ctrlIcon.classList.remove('fa-pause')
+        ctrlIcon.classList.add('fa-play')
+    }else{
+        songElem.play()
+        ctrlIcon.classList.add('fa-pause')
+        ctrlIcon.classList.remove('fa-play')
+    }
+})
