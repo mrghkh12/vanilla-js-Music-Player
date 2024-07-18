@@ -3,6 +3,8 @@ const $ = document
 const songElem = $.querySelector('#songElem')
 const songImg = $.querySelector('.songImg')
 
+const ctrlIcon = $.querySelector('#ctrlIcon')
+
 const ctrlBtn = $.querySelector('.ctrlBtn')
 const prevSongBtn = $.querySelector('.prevSongBtn')
 const nextSongBtn = $.querySelector('.nextSongBtn')
