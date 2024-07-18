@@ -64,7 +64,6 @@ prevSongBtn.addEventListener('click' , ()=>{
 })
 
 modalMenuBtn.addEventListener('click' , (e) => {
-    console.log(e);
     if(e.target.classList.contains('fa-x')){
         modalMenu.style.top = '-100%'
         e.target.classList.remove('fa-x')
