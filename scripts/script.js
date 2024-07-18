@@ -16,6 +16,9 @@ const artistName = $.querySelector('.artistName')
 
 const timeBar = $.querySelector('#timeBar')
 
+const modalMenu = $.querySelector('.modal-song-menu')
+const modalMenuBtn = $.querySelector('.moreBtn')
+
 const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/1677006641';
 const options = {
 	method: 'GET',
@@ -58,6 +61,20 @@ prevSongBtn.addEventListener('click' , ()=>{
     if(currentSong < 0) currentSong = songList.length -1
     selectSong()
     songElem.play()
+})
+
+modalMenuBtn.addEventListener('click' , (e) => {
+    console.log(e);
+    if(e.target.classList.contains('fa-x')){
+        modalMenu.style.top = '-100%'
+        e.target.classList.remove('fa-x')
+        e.target.classList.add('fa-bars')
+    }else{
+        modalMenu.style.top = 0
+        e.target.classList.add('fa-x')
+        e.target.classList.remove('fa-bars')
+    }
+    
 })
 
 ctrlBtn.addEventListener('click' , () => {
