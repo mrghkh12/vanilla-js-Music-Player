@@ -17,6 +17,7 @@ const artistName = $.querySelector('.artistName')
 const timeBar = $.querySelector('#timeBar')
 
 const modalMenu = $.querySelector('.modal-song-menu')
+const modalMenuContainer = $.querySelector('.song-menu')
 const modalMenuBtn = $.querySelector('.moreBtn')
 
 const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/1677006641';
@@ -35,6 +36,7 @@ async function requstApi(){
         const data = await result.tracks.data        
         data.forEach(songObj=>songList.push(songObj))
         selectSong()
+        menuSongCreator()
     } catch (error) {
         console.error(error);
     }
@@ -75,6 +77,21 @@ modalMenuBtn.addEventListener('click' , (e) => {
     }
     
 })
+function menuSongCreator(){
+    songList.forEach(song => {
+        modalMenuContainer.insertAdjacentHTML('beforeend', 
+            ` <div class="songs">
+                  <img src="${song.album.cover_big}" alt="">
+                  <div class="title">
+                    <h4 class="song-Name">${song.title}</h4>
+                    <p class="artist-Name">${song.artist.name}</p>
+                  </div>
+                  <i class="fa-solid fa-play"></i>
+                </div>`
+        )
+    })
+}
+
 
 ctrlBtn.addEventListener('click' , () => {
     if(ctrlIcon.classList.contains('fa-pause')){
@@ -108,3 +125,5 @@ timeBar.addEventListener('mouseup', ()=>{
 if(songElem.play){
     isOK = setInterval(()=>timeBar.value = songElem.currentTime , 1000)
 }
+
+window.addEventListener('load' , menuSongCreator)
