@@ -67,11 +67,11 @@
 .musicPlayerBox #timeBar::-webkit-slider-thumb{
     -webkit-appearance: none;
     background: #f53192;
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    border: 8px solid #fff;
-    box-shadow: 0 5px 5px rgba(255, 26, 26, 0.22);
+    box-shadow: 0 0 0 7px rgba(255, 255, 255, 1),
+    0 0 10px 10px rgba(255, 26, 26, 0.22);
 }
 
 .musicPlayerBox .controlsBtn{
