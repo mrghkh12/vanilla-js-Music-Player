@@ -35,3 +35,22 @@
     box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
     cursor: pointer;
 }
+
+.musicPlayerBox .songImg{
+    width: 220px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
+}
+
+.musicPlayerBox .songTitle .songName{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+}
+.musicPlayerBox .songTitle .artistName{
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
