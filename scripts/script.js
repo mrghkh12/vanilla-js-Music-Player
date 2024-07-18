@@ -15,7 +15,7 @@ const artistName = $.querySelector('.artistName')
 
 const timeBar = $.querySelector('#timeBar')
 
-const url = 'https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem';
+const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/1677006641';
 const options = {
 	method: 'GET',
 	headers: {
@@ -28,7 +28,7 @@ async function requstApi(){
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        const data = await result.data
+        const data = await result.tracks.data        
         data.forEach(songObj=>songList.push(songObj))
         selectSong()
     } catch (error) {
@@ -39,6 +39,13 @@ requstApi()
 
 console.log(songList);
 
+function selectSong(){
+    let mainSongDate = songList[Math.floor(Math.random() * songList.length)]
+    songImg.setAttribute('src', mainSongDate.album.cover_big)
+    songName.innerHTML = mainSongDate.title
+    artistName.innerHTML = mainSongDate.artist.name
+    songElem.setAttribute('src' , mainSongDate.preview)
+}
 
 ctrlBtn.addEventListener('click' , () => {
     if(ctrlIcon.classList.contains('fa-pause')){
