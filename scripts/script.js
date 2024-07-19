@@ -83,7 +83,7 @@ modalMenuBtn.addEventListener('click' , (e) => {
 function menuSongCreator(){
     songList.forEach(song => {
         modalMenuContainer.insertAdjacentHTML('beforeend', 
-            ` <div class="songs" data-songname="${song.title}">
+            ` <div class="songs" data-songname="${song.title}" onclick='playThisSong(event)'>
                   <img src="${song.album.cover_big}" alt="">
                   <div class="title">
                     <h4 class="song-Name">${song.title}</h4>
@@ -105,6 +105,21 @@ function activeSongInMenu(){
         
     })
     
+}
+
+function playThisSong(e){
+    let mainSong = e.target
+    if(!mainSong.classList.contains('songs')) mainSong = mainSong.parentElement
+    if(mainSong.className == 'title') mainSong = mainSong.parentElement
+
+    let mainSongName = mainSong.dataset.songname 
+
+    let indexMainSong = songList.findIndex(songData => mainSongName === songData.title)
+    console.log(indexMainSong);
+    currentSong = indexMainSong
+    selectSong()
+    activeSongInMenu()
+    songElem.play()
 }
 
 ctrlBtn.addEventListener('click' , () => {
