@@ -120,15 +120,22 @@
     height: 420px !important;
     overflow: scroll;
 }
+.musicPlayerBox .modal-song-menu .song-menu::-webkit-scrollbar{
+    width: 0px;
+}
 .musicPlayerBox .modal-song-menu .song-menu .songs{
     display: flex;
     color: #fff;
     align-items: center;
     justify-content: flex-start;
-    padding: 10px ;
+    padding: 0 10px ;
+    margin:  12px 0;
     cursor: pointer;
     text-align: left;
     position: relative;
+}
+.musicPlayerBox .modal-song-menu .song-menu .songs.active{
+    color: #f53192;
 }
 .modal-song-menu .song-menu .songs img{
     width: 50px;

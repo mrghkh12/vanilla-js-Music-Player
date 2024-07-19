@@ -37,6 +37,7 @@ async function requstApi(){
         data.forEach(songObj=>songList.push(songObj))
         selectSong()
         menuSongCreator()
+        activeSongInMenu()
     } catch (error) {
         console.error(error);
     }
@@ -57,12 +58,14 @@ nextSongBtn.addEventListener('click' , ()=>{
     currentSong++
     selectSong()
     songElem.play()
+    activeSongInMenu()
 })
 prevSongBtn.addEventListener('click' , ()=>{
     currentSong--
     if(currentSong < 0) currentSong = songList.length -1
     selectSong()
     songElem.play()
+    activeSongInMenu()
 })
 
 modalMenuBtn.addEventListener('click' , (e) => {
@@ -80,7 +83,7 @@ modalMenuBtn.addEventListener('click' , (e) => {
 function menuSongCreator(){
     songList.forEach(song => {
         modalMenuContainer.insertAdjacentHTML('beforeend', 
-            ` <div class="songs">
+            ` <div class="songs" data-songname="${song.title}">
                   <img src="${song.album.cover_big}" alt="">
                   <div class="title">
                     <h4 class="song-Name">${song.title}</h4>
@@ -92,6 +95,17 @@ function menuSongCreator(){
     })
 }
 
+function activeSongInMenu(){
+    let songsInMenu = $.querySelectorAll('.songs')
+    songsInMenu.forEach(song=>{
+        song.className = 'songs'
+        if(song.dataset.songname == songName.innerHTML){
+            song.classList.add('active')
+        }
+        
+    })
+    
+}
 
 ctrlBtn.addEventListener('click' , () => {
     if(ctrlIcon.classList.contains('fa-pause')){
