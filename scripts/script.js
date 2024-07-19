@@ -50,21 +50,27 @@ function selectSong(){
     let mainSongDate = songList[currentSong]
     songImg.setAttribute('src', mainSongDate.album.cover_big)
     songName.innerHTML = mainSongDate.title
+    songName.setAttribute('data-songname' , mainSongDate.title)
     artistName.innerHTML = mainSongDate.artist.name
     songElem.setAttribute('src' , mainSongDate.preview)
 }
-nextSongBtn.addEventListener('click' , ()=>{
-    if(currentSong > songList.length -1) currentSong = 0
+nextSongBtn.addEventListener('click' , nextSong)
+function nextSong(){
     currentSong++
+    if(currentSong > songList.length -1) currentSong = 0
     selectSong()
     songElem.play()
+    ctrlIcon.classList.add('fa-pause')
+    ctrlIcon.classList.remove('fa-play')
     activeSongInMenu()
-})
+}
 prevSongBtn.addEventListener('click' , ()=>{
     currentSong--
     if(currentSong < 0) currentSong = songList.length -1
     selectSong()
     songElem.play()
+    ctrlIcon.classList.add('fa-pause')
+    ctrlIcon.classList.remove('fa-play')
     activeSongInMenu()
 })
 
@@ -99,7 +105,7 @@ function activeSongInMenu(){
     let songsInMenu = $.querySelectorAll('.songs')
     songsInMenu.forEach(song=>{
         song.className = 'songs'
-        if(song.dataset.songname == songName.innerHTML){
+        if(song.dataset.songname == songName.dataset.songname){  
             song.classList.add('active')
         }
         
@@ -112,6 +118,7 @@ function playThisSong(e){
     if(!mainSong.classList.contains('songs')) mainSong = mainSong.parentElement
     if(mainSong.className == 'title') mainSong = mainSong.parentElement
 
+    console.log(mainSong);
     let mainSongName = mainSong.dataset.songname 
 
     let indexMainSong = songList.findIndex(songData => mainSongName === songData.title)
@@ -152,7 +159,10 @@ timeBar.addEventListener('mouseup', ()=>{
     isOK = setInterval(()=>timeBar.value = songElem.currentTime , 1000)
 })
 if(songElem.play){
-    isOK = setInterval(()=>timeBar.value = songElem.currentTime , 1000)
+    isOK = setInterval(()=>{
+        if(songElem.ended) nextSong()
+        timeBar.value = songElem.currentTime
+    } , 1000)
 }
 
 window.addEventListener('load' , menuSongCreator)
