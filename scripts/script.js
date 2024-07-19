@@ -56,10 +56,12 @@ function selectSong(){
 }
 nextSongBtn.addEventListener('click' , nextSong)
 function nextSong(){
-    if(currentSong > songList.length -1) currentSong = 0
     currentSong++
+    if(currentSong > songList.length -1) currentSong = 0
     selectSong()
     songElem.play()
+    ctrlIcon.classList.add('fa-pause')
+    ctrlIcon.classList.remove('fa-play')
     activeSongInMenu()
 }
 prevSongBtn.addEventListener('click' , ()=>{
@@ -67,6 +69,8 @@ prevSongBtn.addEventListener('click' , ()=>{
     if(currentSong < 0) currentSong = songList.length -1
     selectSong()
     songElem.play()
+    ctrlIcon.classList.add('fa-pause')
+    ctrlIcon.classList.remove('fa-play')
     activeSongInMenu()
 })
 
