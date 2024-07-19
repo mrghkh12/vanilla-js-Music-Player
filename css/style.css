@@ -46,6 +46,11 @@
     border: 8px solid #fff;
     box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
 }
+@keyframes rotat {
+    100%{
+        transform: rotate(360deg);
+    }
+}
 
 .musicPlayerBox .songTitle .songName{
     font-size: 20px;

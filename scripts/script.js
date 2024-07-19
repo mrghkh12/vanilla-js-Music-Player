@@ -59,6 +59,7 @@ function nextSong(){
     currentSong++
     if(currentSong > songList.length -1) currentSong = 0
     selectSong()
+     songImg.style.animation = 'rotat 5s linear infinite'
     songElem.play()
     ctrlIcon.classList.add('fa-pause')
     ctrlIcon.classList.remove('fa-play')
@@ -68,6 +69,7 @@ prevSongBtn.addEventListener('click' , ()=>{
     currentSong--
     if(currentSong < 0) currentSong = songList.length -1
     selectSong()
+     songImg.style.animation = 'rotat 5s linear infinite'
     songElem.play()
     ctrlIcon.classList.add('fa-pause')
     ctrlIcon.classList.remove('fa-play')
@@ -110,7 +112,7 @@ function activeSongInMenu(){
         }
         
     })
-    
+   
 }
 
 function playThisSong(e){
@@ -132,12 +134,14 @@ function playThisSong(e){
 ctrlBtn.addEventListener('click' , () => {
     if(ctrlIcon.classList.contains('fa-pause')){
         songElem.pause();
+        songImg.style.animationPlayState = 'paused'
         ctrlIcon.classList.remove('fa-pause')
         ctrlIcon.classList.add('fa-play')
     }else{
         songElem.play()
         ctrlIcon.classList.add('fa-pause')
         ctrlIcon.classList.remove('fa-play')
+         songImg.style.animation = 'rotat 5s linear infinite'
     }
 })
 
@@ -154,6 +158,7 @@ timeBar.addEventListener('click', (e)=>{
     ctrlIcon.classList.add('fa-pause')
     ctrlIcon.classList.remove('fa-play')
     songElem.play()
+    songImg.style.animation = 'rotat 5s linear infinite'
 })
 timeBar.addEventListener('mouseup', ()=>{
     isOK = setInterval(()=>timeBar.value = songElem.currentTime , 1000)
