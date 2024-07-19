@@ -101,6 +101,11 @@
     box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
     cursor: pointer;
 }
+@media screen and (max-width:400px) {
+    .musicPlayerBox .controlsBtn .btn{
+        margin: 10px;
+    }
+}
 .musicPlayerBox .controlsBtn .btn:nth-child(2){
     transform: scale(1.5);
     background-color: #f53192;
