@@ -1,165 +1,164 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-.container{
-    width: 100%;
-    height: 100vh;
-    background: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; 
+.container {
+  width: 100%;
+  height: 100vh;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.musicPlayerBox{
-    background: #ffe0e5;
-    width: 400px;
-    padding: 25px 35px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 20px 0px #ffffff1f;
-    border-radius: 5px;
-}
-
-.musicPlayerBox .header-option{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-.musicPlayerBox .header-option .circleBtn{
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    background: #fff;
-    color: #f53192;
-    box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
-    cursor: pointer;
+.musicPlayerBox {
+  background: #ffe0e5;
+  width: 400px;
+  padding: 25px 35px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px 0px #ffffff1f;
+  border-radius: 5px;
 }
 
-.musicPlayerBox .songImg{
-    width: 220px;
-    border-radius: 50%;
-    border: 8px solid #fff;
-    box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
+.musicPlayerBox .header-option {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.musicPlayerBox .header-option .circleBtn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  color: #f53192;
+  box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+  cursor: pointer;
+}
+
+.musicPlayerBox .songImg {
+  width: 220px;
+  border-radius: 50%;
+  border: 8px solid #fff;
+  box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
 }
 @keyframes rotat {
-    100%{
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.musicPlayerBox .songTitle .songName{
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
-    margin-top: 20px;
+.musicPlayerBox .songTitle .songName {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 20px;
 }
-.musicPlayerBox .songTitle .artistName{
-    font-size: 14px;
-    color: #333;
-    margin-top: 5px;
+.musicPlayerBox .songTitle .artistName {
+  font-size: 14px;
+  color: #333;
+  margin-top: 5px;
 }
 
-.musicPlayerBox #timeBar{
-    -webkit-appearance: none;
-    width: 100%;
-     height: 6px;
-     background: #f53192;
-     border-radius: 4px;
-     cursor: pointer;
-     margin: 40px 0;
+.musicPlayerBox #timeBar {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #f53192;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 40px 0;
 }
-.musicPlayerBox #timeBar::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    background: #f53192;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 7px rgba(255, 255, 255, 1),
+.musicPlayerBox #timeBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #f53192;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 1),
     0 0 10px 10px rgba(255, 26, 26, 0.22);
 }
 
-.musicPlayerBox .controlsBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.musicPlayerBox .controlsBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.musicPlayerBox .controlsBtn .btn{
-    width: 60px;
-    height: 60px;
-    margin: 20px;
-    background: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: #f53192;
-    box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
-    cursor: pointer;
+.musicPlayerBox .controlsBtn .btn {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #f53192;
+  box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
+  cursor: pointer;
 }
-@media screen and (max-width:400px) {
-    .musicPlayerBox .controlsBtn .btn{
-        margin: 10px;
-    }
+@media screen and (max-width: 400px) {
+  .musicPlayerBox .controlsBtn .btn {
+    margin: 10px;
+  }
 }
-.musicPlayerBox .controlsBtn .btn:nth-child(2){
-    transform: scale(1.5);
-    background-color: #f53192;
-    color: #fff;
+.musicPlayerBox .controlsBtn .btn:nth-child(2) {
+  transform: scale(1.5);
+  background-color: #f53192;
+  color: #fff;
 }
 
-.musicPlayerBox .modal-song-menu{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -100%;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 5;
-    transition: 0.5s;
-    padding: 80px 25px;
-    overflow: hidden;
+.musicPlayerBox .modal-song-menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  transition: 0.5s;
+  padding: 80px 25px;
+  overflow: hidden;
 }
-.musicPlayerBox .modal-song-menu .song-menu{
-    border-top: 1px solid #fff;
-    width: 100%;
-    height: 420px !important;
-    overflow: scroll;
+.musicPlayerBox .modal-song-menu .song-menu {
+  border-top: 1px solid #fff;
+  width: 100%;
+  height: 420px !important;
+  overflow: scroll;
 }
-.musicPlayerBox .modal-song-menu .song-menu::-webkit-scrollbar{
-    width: 0px;
+.musicPlayerBox .modal-song-menu .song-menu::-webkit-scrollbar {
+  width: 0px;
 }
-.musicPlayerBox .modal-song-menu .song-menu .songs{
-    display: flex;
-    color: #fff;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0 10px ;
-    margin:  12px 0;
-    cursor: pointer;
-    text-align: left;
-    position: relative;
+.musicPlayerBox .modal-song-menu .song-menu .songs {
+  display: flex;
+  color: #fff;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  margin: 12px 0;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
 }
-.musicPlayerBox .modal-song-menu .song-menu .songs.active{
-    color: #f53192;
+.musicPlayerBox .modal-song-menu .song-menu .songs.active {
+  color: #f53192;
 }
-.modal-song-menu .song-menu .songs img{
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+.modal-song-menu .song-menu .songs img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
-.modal-song-menu .song-menu .songs i{
-    position: absolute;
-    right: 15px;
+.modal-song-menu .song-menu .songs i {
+  position: absolute;
+  right: 15px;
 }
-.musicPlayerBox .circleBtn{
-    z-index: 6;
-    
+.musicPlayerBox .circleBtn {
+  z-index: 6;
 }
 .musicPlayerBox .moreBtn i {
-    padding: 12px;
+  padding: 12px;
 }
