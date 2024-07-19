@@ -16,6 +16,10 @@ const artistName = $.querySelector('.artistName')
 
 const timeBar = $.querySelector('#timeBar')
 
+const modalMenu = $.querySelector('.modal-song-menu')
+const modalMenuContainer = $.querySelector('.song-menu')
+const modalMenuBtn = $.querySelector('.moreBtn')
+
 const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/1677006641';
 const options = {
 	method: 'GET',
@@ -32,6 +36,8 @@ async function requstApi(){
         const data = await result.tracks.data        
         data.forEach(songObj=>songList.push(songObj))
         selectSong()
+        menuSongCreator()
+        activeSongInMenu()
     } catch (error) {
         console.error(error);
     }
@@ -52,13 +58,69 @@ nextSongBtn.addEventListener('click' , ()=>{
     currentSong++
     selectSong()
     songElem.play()
+    activeSongInMenu()
 })
 prevSongBtn.addEventListener('click' , ()=>{
     currentSong--
     if(currentSong < 0) currentSong = songList.length -1
     selectSong()
     songElem.play()
+    activeSongInMenu()
 })
+
+modalMenuBtn.addEventListener('click' , (e) => {
+    if(e.target.classList.contains('fa-x')){
+        modalMenu.style.top = '-100%'
+        e.target.classList.remove('fa-x')
+        e.target.classList.add('fa-bars')
+    }else{
+        modalMenu.style.top = 0
+        e.target.classList.add('fa-x')
+        e.target.classList.remove('fa-bars')
+    }
+    
+})
+function menuSongCreator(){
+    songList.forEach(song => {
+        modalMenuContainer.insertAdjacentHTML('beforeend', 
+            ` <div class="songs" data-songname="${song.title}" onclick='playThisSong(event)'>
+                  <img src="${song.album.cover_big}" alt="">
+                  <div class="title">
+                    <h4 class="song-Name">${song.title}</h4>
+                    <p class="artist-Name">${song.artist.name}</p>
+                  </div>
+                  <i class="fa-solid fa-play"></i>
+                </div>`
+        )
+    })
+}
+
+function activeSongInMenu(){
+    let songsInMenu = $.querySelectorAll('.songs')
+    songsInMenu.forEach(song=>{
+        song.className = 'songs'
+        if(song.dataset.songname == songName.innerHTML){
+            song.classList.add('active')
+        }
+        
+    })
+    
+}
+
+function playThisSong(e){
+    let mainSong = e.target
+    if(!mainSong.classList.contains('songs')) mainSong = mainSong.parentElement
+    if(mainSong.className == 'title') mainSong = mainSong.parentElement
+
+    let mainSongName = mainSong.dataset.songname 
+
+    let indexMainSong = songList.findIndex(songData => mainSongName === songData.title)
+    console.log(indexMainSong);
+    currentSong = indexMainSong
+    selectSong()
+    activeSongInMenu()
+    songElem.play()
+}
 
 ctrlBtn.addEventListener('click' , () => {
     if(ctrlIcon.classList.contains('fa-pause')){
@@ -92,3 +154,5 @@ timeBar.addEventListener('mouseup', ()=>{
 if(songElem.play){
     isOK = setInterval(()=>timeBar.value = songElem.currentTime , 1000)
 }
+
+window.addEventListener('load' , menuSongCreator)

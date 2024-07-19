@@ -11,13 +11,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
 }
 .musicPlayerBox{
     background: #ffe0e5;
     width: 400px;
     padding: 25px 35px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px 0px #ffffff1f;
+    border-radius: 5px;
 }
 
 .musicPlayerBox .header-option{
@@ -96,4 +100,56 @@
     transform: scale(1.5);
     background-color: #f53192;
     color: #fff;
+}
+
+.musicPlayerBox .modal-song-menu{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 5;
+    transition: 0.5s;
+    padding: 80px 25px;
+    overflow: hidden;
+}
+.musicPlayerBox .modal-song-menu .song-menu{
+    border-top: 1px solid #fff;
+    width: 100%;
+    height: 420px !important;
+    overflow: scroll;
+}
+.musicPlayerBox .modal-song-menu .song-menu::-webkit-scrollbar{
+    width: 0px;
+}
+.musicPlayerBox .modal-song-menu .song-menu .songs{
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px ;
+    margin:  12px 0;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+}
+.musicPlayerBox .modal-song-menu .song-menu .songs.active{
+    color: #f53192;
+}
+.modal-song-menu .song-menu .songs img{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.modal-song-menu .song-menu .songs i{
+    position: absolute;
+    right: 15px;
+}
+.musicPlayerBox .circleBtn{
+    z-index: 6;
+    
+}
+.musicPlayerBox .moreBtn i {
+    padding: 12px;
 }
