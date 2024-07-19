@@ -128,7 +128,10 @@ function playThisSong(e){
     currentSong = indexMainSong
     selectSong()
     activeSongInMenu()
+    ctrlIcon.classList.add('fa-pause')
+    ctrlIcon.classList.remove('fa-play')
     songElem.play()
+    songImg.style.animation = 'rotat 5s linear infinite'
 }
 
 ctrlBtn.addEventListener('click' , () => {
