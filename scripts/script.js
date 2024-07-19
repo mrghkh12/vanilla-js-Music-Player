@@ -54,13 +54,14 @@ function selectSong(){
     artistName.innerHTML = mainSongDate.artist.name
     songElem.setAttribute('src' , mainSongDate.preview)
 }
-nextSongBtn.addEventListener('click' , ()=>{
+nextSongBtn.addEventListener('click' , nextSong)
+function nextSong(){
     if(currentSong > songList.length -1) currentSong = 0
     currentSong++
     selectSong()
     songElem.play()
     activeSongInMenu()
-})
+}
 prevSongBtn.addEventListener('click' , ()=>{
     currentSong--
     if(currentSong < 0) currentSong = songList.length -1
@@ -100,9 +101,7 @@ function activeSongInMenu(){
     let songsInMenu = $.querySelectorAll('.songs')
     songsInMenu.forEach(song=>{
         song.className = 'songs'
-
-        if(song.dataset.songname == songName.dataset.songname){
-           
+        if(song.dataset.songname == songName.dataset.songname){  
             song.classList.add('active')
         }
         
@@ -156,7 +155,10 @@ timeBar.addEventListener('mouseup', ()=>{
     isOK = setInterval(()=>timeBar.value = songElem.currentTime , 1000)
 })
 if(songElem.play){
-    isOK = setInterval(()=>timeBar.value = songElem.currentTime , 1000)
+    isOK = setInterval(()=>{
+        if(songElem.ended) nextSong()
+        timeBar.value = songElem.currentTime
+    } , 1000)
 }
 
 window.addEventListener('load' , menuSongCreator)
